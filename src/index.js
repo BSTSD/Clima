@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
-const router = createBrowserRouter(
+const router = createHashRouter(
     [
         {
-            path: "/nombre-del-repositorio/*",
+            path: "/",
             element: <App />,
+            children: [
+                {
+                    path: "/:city",
+                    element: <App />
+                }
+            ]
         }
     ],
     {
-        basename: "/nombre-del-repositorio",
         future: {
             v7_startTransition: true,
             v7_relativeSplatPath: true,

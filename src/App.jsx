@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
 import './App.css';
 
 function App() {
     const [coordinates, setCoordinates] = useState(null);
+    const location = useLocation();
 
     return (
         <div className="App">
