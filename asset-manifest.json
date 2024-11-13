@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/nombre-del-repositorio/static/css/main.d559e1e2.css",
-    "main.js": "/nombre-del-repositorio/static/js/main.ec0ae046.js",
-    "index.html": "/nombre-del-repositorio/index.html",
-    "main.d559e1e2.css.map": "/nombre-del-repositorio/static/css/main.d559e1e2.css.map",
-    "main.ec0ae046.js.map": "/nombre-del-repositorio/static/js/main.ec0ae046.js.map"
+    "main.css": "/Clima/static/css/main.d559e1e2.css",
+    "main.js": "/Clima/static/js/main.1d8a8662.js",
+    "index.html": "/Clima/index.html",
+    "main.d559e1e2.css.map": "/Clima/static/css/main.d559e1e2.css.map",
+    "main.1d8a8662.js.map": "/Clima/static/js/main.1d8a8662.js.map"
   },
   "entrypoints": [
     "static/css/main.d559e1e2.css",
-    "static/js/main.ec0ae046.js"
+    "static/js/main.1d8a8662.js"
   ]
 }
