@@ -1,0 +1,70 @@
+.search-bar {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.react-select-container {
+    font-size: 16px;
+}
+
+.react-select__control {
+    border-radius: 8px !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    min-height: 44px !important;
+}
+
+.react-select__control:hover {
+    border-color: #aaa !important;
+}
+
+.react-select__menu {
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    z-index: 9999 !important;
+}
+
+.react-select__option {
+    padding: 12px !important;
+    cursor: pointer !important;
+}
+
+.react-select__option--is-focused {
+    background-color: #f8f9fa !important;
+}
+
+.react-select__option--is-selected {
+    background-color: #007bff !important;
+}
+
+.select-loading-indicator {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.loading-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.select-message {
+    padding: 8px;
+    text-align: center;
+    color: #666;
+}
