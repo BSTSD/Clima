@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import './ForecastCard.css';
 
-const ForecastCard = ({ city }) => {
-    const [forecast, setForecast] = useState(null);
-    const API_KEY = '4d8fb5b93d4af21d66a2948710284366';
-
-    useEffect(() => {
-        const fetchForecast = async () => {
-            try {
-                const response = await fetch(
-                    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=es`
-                );
-                const data = await response.json();
-                setForecast(data);
-            } catch (error) {
-                console.error('Error:', error);
-            }
+const ForecastCard = ({ forecast }) => {
+    const getWeatherIcon = (code) => {
+        const icons = {
+            // Soleado
+            0: <i className="fas fa-sun weather-icon sunny"></i>,
+            // Parcialmente nublado
+            1: <i className="fas fa-cloud-sun weather-icon partly-cloudy"></i>,
+            // Nublado
+            2: <i className="fas fa-cloud weather-icon cloudy"></i>,
+            // Lluvia
+            3: <i className="fas fa-cloud-rain weather-icon rainy"></i>,
+            // Nieve
+            4: <i className="fas fa-snowflake weather-icon snowy"></i>,
+            // Tormenta
+            5: <i className="fas fa-bolt weather-icon stormy"></i>
         };
-
-        fetchForecast();
-    }, [city]);
+        return icons[code] || icons[0];
+    };
 
     return (
-        <div className="forecast-container">
-            <h3>Pronóstico 5 días</h3>
-            <div className="forecast-cards">
-                {forecast?.list?.filter((item, index) => index % 8 === 0).map((day, index) => (
+        <div className="forecast-section">
+            <h3 className="forecast-title">Próximos días</h3>
+            <div className="forecast-container">
+                {forecast.map((day, index) => (
                     <div key={index} className="forecast-day">
-                        <p>{new Date(day.dt * 1000).toLocaleDateString('es', { weekday: 'short' })}</p>
-                        <img
-                            src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
-                            alt={day.weather[0].description}
-                        />
-                        <p className="temp">{Math.round(day.main.temp)}°C</p>
+                        <div className="day-name">{day.date}</div>
+                        <i className={`weather-icon ${getWeatherIcon(day.weatherCode)}`}></i>
+                        <div className="temp-range">
+                            <span className="max-temp">{Math.round(day.maxTemp)}°</span>
+                            <span className="min-temp">{Math.round(day.minTemp)}°</span>
+                        </div>
                     </div>
                 ))}
             </div>

@@ -1,0 +1,27 @@
+.language-selector {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.language-select {
+    background: #16213e;
+    color: #00fff5;
+    border: 2px solid #0f3460;
+    border-radius: 15px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.language-select:hover {
+    border-color: #00fff5;
+    box-shadow: 0 0 10px rgba(0, 255, 245, 0.2);
+}
+
+.language-select option {
+    background: #1a1a2e;
+    color: #00fff5;
+}

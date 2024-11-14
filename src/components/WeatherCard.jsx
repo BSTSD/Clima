@@ -1,84 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 import './WeatherCard.css';
 
-const WeatherCard = ({ coordinates }) => {
-    const [weatherData, setWeatherData] = useState(null);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const { city } = useParams();
-    const API_KEY = '4d8fb5b93d4af21d66a2948710284366';
-
-    useEffect(() => {
-        const fetchWeather = async () => {
-            if (!coordinates?.lat || !coordinates?.lon) {
-                setWeatherData(null);
-                return;
-            }
-
-            setLoading(true);
-            setError(null);
-
-            try {
-                const response = await fetch(
-                    `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${API_KEY}&units=metric&lang=es`
-                );
-
-                if (!response.ok) {
-                    throw new Error('Error al obtener el clima');
-                }
-
-                const data = await response.json();
-                setWeatherData(data);
-            } catch (err) {
-                console.error('Error:', err);
-                setError('No se pudo cargar la información del clima');
-            } finally {
-                setLoading(false);
-            }
+const WeatherCard = ({ data }) => {
+    const getWeatherIcon = (code) => {
+        const icons = {
+            '01d': 'fas fa-sun',
+            '01n': 'fas fa-moon',
+            '02d': 'fas fa-cloud-sun',
+            '02n': 'fas fa-cloud-moon',
+            '03d': 'fas fa-cloud',
+            '03n': 'fas fa-cloud',
+            '04d': 'fas fa-cloud',
+            '04n': 'fas fa-cloud',
+            '09d': 'fas fa-cloud-rain',
+            '09n': 'fas fa-cloud-rain',
+            '10d': 'fas fa-cloud-showers-heavy',
+            '10n': 'fas fa-cloud-showers-heavy',
+            '11d': 'fas fa-bolt',
+            '11n': 'fas fa-bolt',
+            '13d': 'fas fa-snowflake',
+            '13n': 'fas fa-snowflake',
+            '50d': 'fas fa-smog',
+            '50n': 'fas fa-smog'
         };
-
-        fetchWeather();
-    }, [coordinates]);
-
-    if (loading) {
-        return (
-            <div className="weather-card">
-                <div className="loading">Cargando información del clima...</div>
-            </div>
-        );
-    }
-
-    if (error) {
-        return (
-            <div className="weather-card">
-                <div className="error-message">{error}</div>
-            </div>
-        );
-    }
-
-    if (!weatherData || !coordinates) {
-        return (
-            <div className="weather-card">
-                <div className="loading">
-                    Busca una ciudad para ver el clima
-                </div>
-            </div>
-        );
-    }
+        return icons[code] || 'fas fa-question';
+    };
 
     return (
         <div className="weather-card">
-            <h2>{city || coordinates.name}</h2>
-            <div className="temperature">
-                {Math.round(weatherData.main.temp)}°C
-            </div>
-            <div className="description">
-                {weatherData.weather[0].description}
-            </div>
-            <div className="details">
-                <div>Humedad: {weatherData.main.humidity}%</div>
-                <div>Viento: {Math.round(weatherData.wind.speed * 3.6)} km/h</div>
+            <div className="weather-main">
+                <div className="weather-info">
+                    <h2 className="location">
+                        <i className="fas fa-map-marker-alt"></i>
+                        {data.name}, {data.sys.country}
+                    </h2>
+                    <div className="temperature">
+                        <i className={getWeatherIcon(data.weather[0].icon)}></i>
+                        {Math.round(data.main.temp)}°C
+                    </div>
+                    <div className="weather-description">
+                        {data.weather[0].description}
+                    </div>
+                </div>
+                <div className="current-details">
+                    <div className="detail-item">
+                        <i className="fas fa-temperature-high"></i>
+                        <span>Sensación térmica</span>
+                        <span>{Math.round(data.main.feels_like)}°C</span>
+                    </div>
+                    <div className="detail-item">
+                        <i className="fas fa-tint"></i>
+                        <span>Humedad</span>
+                        <span>{data.main.humidity}%</span>
+                    </div>
+                    <div className="detail-item">
+                        <i className="fas fa-wind"></i>
+                        <span>Viento</span>
+                        <span>{Math.round(data.wind.speed * 3.6)} km/h</span>
+                    </div>
+                </div>
             </div>
         </div>
     );

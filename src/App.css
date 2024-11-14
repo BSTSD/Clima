@@ -6,226 +6,79 @@ body {
 }
 
 .app-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-.search-bar {
+    min-height: 100vh;
+    padding: 2rem;
     position: relative;
-    display: flex;
-    margin-bottom: 20px;
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1;
 }
 
-.search-bar>div {
-    flex: 1;
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos para el menú */
-div[class*="menu"] {
-    background-color: white;
-    border-radius: 8px !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Estilos para las opciones */
-div[class*="option"] {
-    padding: 10px 15px !important;
-    cursor: pointer !important;
-}
-
-/* Estilos para el control */
-div[class*="control"] {
-    min-height: 44px !important;
-    border-color: #ddd !important;
-}
-
-div[class*="control"]:hover {
-    border-color: #007bff !important;
-}
-
-/* Estilos para los mensajes */
-div[class*="menu-notice"] {
-    padding: 8px 12px !important;
-    text-align: center !important;
-    color: #666 !important;
-}
-
-.weather-card {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.weather-info {
+.app-title {
     text-align: center;
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.temperature {
-    font-size: 48px;
-    margin: 10px 0;
-}
+@media (max-width: 768px) {
+    .app-container {
+        padding: 1rem;
+    }
 
-.description {
-    text-transform: capitalize;
-    color: #666;
-}
+    .content-wrapper {
+        padding: 1rem;
+    }
 
-.details {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.error-message {
-    color: red;
-    text-align: center;
-    margin: 20px 0;
+    .app-title {
+        font-size: 2rem;
+    }
 }
 
 .loading {
     text-align: center;
-    margin: 20px 0;
+    color: #fff;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 1rem 0;
 }
 
-.search-container {
-    position: relative;
-    width: 100%;
+.error-message {
+    text-align: center;
+    color: #ff6b6b;
+    padding: 1rem;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 1rem 0;
 }
 
-.suggestions-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-top: 5px;
-    padding: 0;
-    list-style: none;
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.loading-container {
+    text-align: center;
+    padding: 2rem;
+    color: #fff;
 }
 
-.suggestion-item {
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-left-color: #fff;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    animation: spin 1s linear infinite;
 }
 
-.suggestion-item:hover {
-    background-color: #f5f5f5;
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
-
-/* Estilo para el scrollbar de las sugerencias */
-.suggestions-list::-webkit-scrollbar {
-    width: 8px;
-}
-
-.suggestions-list::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-.suggestions-list::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-
-.suggestions-list::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-/* Estilos adicionales para mejorar la apariencia del select */
-.select-container {
-    position: relative;
-    width: 100%;
-}
-
-/* Ajustes para el dropdown */
-.select__menu {
-    margin-top: 4px !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
-}
-
-.select__option {
-    padding: 10px 12px !important;
-}
-
-.select__option:hover {
-    background-color: #f5f5f5 !important;
-}
-
-.select__control {
-    border-color: #ddd !important;
-    transition: all 0.2s !important;
-}
-
-.select__control:hover {
-    border-color: #007bff !important;
-}
-
-.select__control--is-focused {
-    border-color: #007bff !important;
-    box-shadow: 0 0 0 1px #007bff !important;
-}
-
-/* Estilos específicos para react-select */
-.select__value-container {
-    padding: 8px 12px;
-}
-
-.select__input {
-    margin: 0;
-    padding: 0;
-}
-
-.select__placeholder {
-    color: #666 !important;
-}
-
-.select__single-value {
-    color: #333 !important;
-}
-
-.select__menu {
-    margin-top: 8px !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    z-index: 2 !important;
-}
-
-.select__option {
-    padding: 10px 15px !important;
-    cursor: pointer !important;
-    transition: background-color 0.2s !important;
-}
-
-.select__option:hover {
-    background-color: #f5f5f5 !important;
-}
-
-.select__option--is-focused {
-    background-color: #f0f0f0 !important;
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }

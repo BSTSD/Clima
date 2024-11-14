@@ -1,0 +1,78 @@
+.forecast-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1.5rem;
+}
+
+.forecast-title {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.forecast-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.forecast-day {
+    min-width: 120px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.forecast-day:hover {
+    transform: translateY(-5px);
+}
+
+.day-name {
+    color: #fff;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.weather-icon {
+    font-size: 2rem;
+    color: #ffd700;
+    margin: 0.5rem 0;
+}
+
+.temp-range {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.max-temp {
+    color: #fff;
+    font-weight: 500;
+}
+
+.min-temp {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Estilos para la barra de desplazamiento */
+.forecast-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.forecast-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.forecast-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
